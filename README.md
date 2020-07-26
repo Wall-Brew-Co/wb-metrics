@@ -8,7 +8,7 @@ wb-metrics measures the time it takes functions to execute, uses `clojure.tools.
 Add the library to your `:dependencies`:
 
 ```clojure
-[com.wallbrew/wb-metrics "1.0.0"]
+[com.wallbrew/wb-metrics "2.0.0"]
 ```
 
 ## Usage

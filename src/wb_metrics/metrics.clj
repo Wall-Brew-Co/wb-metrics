@@ -1,4 +1,4 @@
-(ns wb-metrics.core
+(ns wb-metrics.metrics
   "Namespace for function instrumentation: logging, timing, metrics."
   (:require [clojure.string :as cs]
             [clojure.tools.logging :as log]
