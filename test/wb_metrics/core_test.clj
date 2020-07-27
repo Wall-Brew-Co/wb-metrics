@@ -1,6 +1,6 @@
 (ns wb-metrics.core-test
   (:require [clojure.test :refer :all]
-            [wb-metrics.core :refer :all]))
+            [wb-metrics.metrics :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."
