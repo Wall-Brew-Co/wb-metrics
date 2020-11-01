@@ -1,9 +1,8 @@
 (ns wb-metrics.ring
   "Namespace for ring server utilities"
   (:require [clojure.string :as cs]
-            [clojure.tools.logging :as logger]
             [compojure.core :as compojure]
-            [taoensso.timbre :as timbre]
+            [taoensso.timbre :as logger]
             [wb-metrics.clj-http :as clj-http]
             [wb-metrics.correlation-ids :as corr-ids]
             [wb-metrics.metrics :as metrics]
@@ -45,8 +44,8 @@
 
 (defn log-error
   [e request]
-  (timbre/with-context (select-keys request [:request-method :uri :query-string])
-    (timbre/errorf e "Server error! '%s' handling %s %s"
+  (logger/with-context (select-keys request [:request-method :uri :query-string])
+    (logger/errorf e "Server error! '%s' handling %s %s"
                    (.getMessage e)
                    (-> request :request-method name cs/upper-case)
                    (:uri request))))

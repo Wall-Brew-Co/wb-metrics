@@ -35,12 +35,12 @@ You can choose from the provided formatting functions or write your own.
 (my-function 1 2)
 ;; logs "user/my-function elapsed 123 ms"
 
-;; log timing w/args + return value
+;; log timing with arguments and the return value
 (instrument-fn #'my-function format-elapsed-args-ret)
 (my-function 1 2 3 4 5)
 ;; logs "(user/my-function 1 2 3 4 5) elapsed 123 ms => 15"
 
-;; log timing w/custom ret & args formatter
+;; log timing with a custom message formatter
 (instrument-fn #'my-function
                (format-fn (fn [ret & args]
                             (format "ret=%d; args product=%s" ret (apply * args)))))
