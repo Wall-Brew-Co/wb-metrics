@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v3.0.0 / 2020 Nov 01
+
+> Extract function timing hooks to com.wallbrew/keg
+
+* **Delete** ^^^
+
 ## v2.0.0 / 2020 Jul 27
 
 > Middleware/config for various logging contexts

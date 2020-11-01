@@ -45,10 +45,12 @@
             ns-levels))))
 
 (defn configure!
-  [{:keys [root-level] :as opts}]
+  ([] (configure! {}))
+
+  ([{:keys [root-level] :as opts}]
   (let [formatter    (if config/local? (partial local-format opts) logstash-format)
         formatter-fn #(formatter (update % :context decorate-logs opts))]
     (timbre/merge-config! {:middleware [(log-level-middleware root-level opts)]
                            :async?     true
                            :output-fn  formatter-fn})
-    (log/use-timbre)))
+    (log/use-timbre))))
