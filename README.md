@@ -13,36 +13,10 @@ Add the library to your `:dependencies`:
 
 ## Usage
 
-To get basic runtime information:
+Configure `wb-metrics` to act as your primary logger somewhere in your application startup:
 
 ```clojure
-(instrument-fn #'my-function)
-```
+(:require [wb-metrics.logging :as metrics])
 
-Call `instrument.core/instrument-fn` with the named symbol of the target function.
-Optionally, you may pass another function to format the log entry.
-You can choose from the provided formatting functions or write your own.
-
-```clojure
-(require 'wb-metrics.core)
-
-(defn my-function
-  [x y & z]
-  (apply + x y z))
-
-;; default logging
-(instrument-fn #'my-function)
-(my-function 1 2)
-;; logs "user/my-function elapsed 123 ms"
-
-;; log timing with arguments and the return value
-(instrument-fn #'my-function format-elapsed-args-ret)
-(my-function 1 2 3 4 5)
-;; logs "(user/my-function 1 2 3 4 5) elapsed 123 ms => 15"
-
-;; log timing with a custom message formatter
-(instrument-fn #'my-function
-               (format-fn (fn [ret & args]
-                            (format "ret=%d; args product=%s" ret (apply * args)))))
-;; logs "user/my-function elapsed 123 ms; ret=15; args product=120"
+(metrics/configure!)
 ```
