@@ -79,14 +79,6 @@
         (fn [] (clj-http/with-correlation-ids #(corr-ids/add-correlation-ids (handler request))))
         corr-ids))))
 
-(defn info-route
-  "A plain, unauthenticated route to retrieve version info."
-  [artifact-info]
-  (compojure/defroutes info-route
-    (compojure/GET "/info" []
-      {:status 200
-       :body (versioneer/get-artifact-info artifact-info)})))
-
 (defn wrap-instrument-server
   "Supported option:
     * excluded-routes - sequences of strings representing compojure routes that should be excluded from logging"
