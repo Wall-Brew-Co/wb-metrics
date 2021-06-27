@@ -35,5 +35,5 @@ jobs:
 
       - name: Lint Clojure
         run: |
-          clj-kondo --config ./dev/lint/clj-kondo.edn --lint \
+          clj-kondo --fail-level error --config ./dev/lint/clj-kondo.edn --lint \
             $(find . -type f -regex ".*\.clj[csx]?$")
