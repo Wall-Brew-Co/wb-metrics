@@ -8,6 +8,7 @@
             [wb-metrics.metrics :as metrics]
             [wb-metrics.versioneer :as versioneer]))
 
+
 (defn request->metric
   "Creates a metric name from the request.
   e.g.  GET /v1/recipe/:id and a request of /v1/loan/1234
@@ -20,9 +21,11 @@
                            (cs/replace #":|-" "_")
                            (cs/split #"/")))))))
 
+
 (defn static-asset?
   [{:keys [uri]}]
   (some #(cs/ends-with? uri %) [".css" ".js" ".html"]))
+
 
 (defn wrap-metrics
   [handler]
@@ -42,13 +45,15 @@
             (let [duration (- (System/currentTimeMillis) start)]
               (metrics/send-elapsed (cons "timing" metric) duration))))))))
 
+
 (defn log-error
   [e request]
   (logger/with-context (select-keys request [:request-method :uri :query-string])
-    (logger/errorf e "Server error! '%s' handling %s %s"
-                   (.getMessage e)
-                   (-> request :request-method name cs/upper-case)
-                   (:uri request))))
+                       (logger/errorf e "Server error! '%s' handling %s %s"
+                                      (.getMessage e)
+                                      (-> request :request-method name cs/upper-case)
+                                      (:uri request))))
+
 
 (defn wrap-logging*
   "Supported option:
@@ -70,6 +75,7 @@
             (log-error t request)
             (throw t)))))))
 
+
 (defn wrap-log-correlation-ids
   [handler]
   (fn [request]
@@ -78,6 +84,7 @@
       (corr-ids/with-correlation-ids
         (fn [] (clj-http/with-correlation-ids #(corr-ids/add-correlation-ids (handler request))))
         corr-ids))))
+
 
 (defn wrap-instrument-server
   "Supported option:
