@@ -4,7 +4,7 @@
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[cheshire "5.8.1"]
-                 [com.fzakaria/slf4j-timbre "0.3.19"]
+                 [com.fzakaria/slf4j-timbre "0.3.21"]
                  [com.taoensso/timbre "5.1.2"]
                  [compojure "1.6.1"]
                  [metrics-clojure "2.10.0"]
