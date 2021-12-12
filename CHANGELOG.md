@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v3.1.0 / 2021 Dec 12
+
+> Ignore logs from apache namespace that may leak integration secrets
+
+* **Update** ^^^
+
 ## v3.0.0 / 2020 Nov 01
 
 > Extract function timing hooks to com.wallbrew/keg

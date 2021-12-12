@@ -1,4 +1,4 @@
-(defproject com.wallbrew/wb-metrics "3.0.0"
+(defproject com.wallbrew/wb-metrics "3.1.0"
   :description "A library for collecting runtime performance metrics"
   :url "https://github.com/Wall-Brew-Co/wb-metrics"
   :license {:name "MIT"
