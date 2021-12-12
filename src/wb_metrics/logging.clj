@@ -44,15 +44,18 @@
   [root-level {:keys [ns-levels]}]
   (let [root-logging-level (or root-level :info)]
     (timbre-ns-pattern-level/middleware
-      (merge {"org.eclipse.jetty.*" :info
-              :all                  root-logging-level}
-             ns-levels))))
+     (merge {"org.eclipse.jetty.*" :info ; These namespaces walk over and handle all inbound HTTP requests
+             "org.apache.http.*"   :info ; The Request builder logs a :debug level warning containing request headers, possibly including API Keys
+             "com.zaxxer.hikari.*" :info ; The db pool logs ~3 messages each time it checks to see if resizing is needed
+             :all                  root-logging-level}
+            ns-levels))))
 
 
 (defn configure!
   ([] (configure! {}))
 
-  ([{:keys [root-level] :as opts}]
+  ([{:keys [root-level]
+     :as   opts}]
    (let [formatter    (if config/local? (partial local-format opts) logstash-format)
          formatter-fn #(formatter (update % :context decorate-logs opts))]
      (timbre/merge-config! {:middleware [(log-level-middleware root-level opts)]
