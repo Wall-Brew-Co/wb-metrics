@@ -23,6 +23,6 @@ Configure `wb-metrics` to act as your primary logger somewhere in your applicati
 
 ## License
 
-Copyright © 2020-2021 - [Wall Brew Co](https://wallbrew.com/)
+Copyright © 2020-2022 - [Wall Brew Co](https://wallbrew.com/)
 
 This software is provided for free, public use as outlined in the [MIT License](https://github.com/Wall-Brew-Co/wb-metrics/blob/master/LICENSE)
