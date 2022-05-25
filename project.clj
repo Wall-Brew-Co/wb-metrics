@@ -8,6 +8,6 @@
                  [com.taoensso/timbre "5.1.2"]
                  [compojure "1.6.1"]
                  [metrics-clojure "2.10.0"]
-                 [org.clojure/clojure "1.10.3"]
+                 [org.clojure/clojure "1.11.1"]
                  [timbre-ns-pattern-level "0.1.2"]
                  [trptcolin/versioneer "0.2.0"]])
