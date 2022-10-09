@@ -3,7 +3,7 @@
   :url "https://github.com/Wall-Brew-Co/wb-metrics"
   :license {:name "MIT"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[cheshire "5.8.1"]
+  :dependencies [[cheshire "5.11.0"]
                  [com.fzakaria/slf4j-timbre "0.3.21"]
                  [com.taoensso/timbre "5.2.1"]
                  [compojure "1.6.1"]
