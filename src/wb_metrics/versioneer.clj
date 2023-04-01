@@ -3,7 +3,7 @@
   (:require [trptcolin.versioneer.core :as versioneer]))
 
 
-(defn get-artifact-info*
+(defn ^:deprecated get-artifact-info*
   "Retrieve the version information from project.clj
    For Wall Brew projects, simpy include the artifact name: e.g. common-beer-format
    If the artifact belongs to another group, that can be passed as well: e.g. trptcolin/versioneer"

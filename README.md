@@ -5,26 +5,21 @@ This library has utility functions to work with [clj-http](https://github.com/da
 
 This repository follows the guidelines and standards of the [Wall Brew Open Source Policy.](https://github.com/Wall-Brew-Co/open-source "Our open source guidelines")
 
-## Dependency
+## DEPRECATION NOTICE
 
-Add the library to your `:dependencies`:
+As of 2023-03-31, this library has been deprecated and will no longer receive updates.
+If you wish to continue using the functionality within this library, feel free to fork this repository or to reuse the contents within: As a reminder, this code is provided under the MIT License.
 
-```clojure
-[com.wallbrew/wb-metrics "2.0.0"]
-```
+This reflects the natural evolution of observability enhancements across our industry, and an explicit preference for community standards over local optima.
 
-## Usage
+As of writing, Wall Brew now prefers the following alternatives:
 
-Configure `wb-metrics` to act as your primary logger somewhere in your application startup:
+- [OpenTelemetry](https://opentelemetry.io/) for distributed log correlation
+- [Logback](https://logback.qos.ch/) for log formatting and filtering
 
-```clojure
-(:require [wb-metrics.logging :as metrics])
-
-(metrics/configure!)
-```
 
 ## License
 
-Copyright © 2020-2022 - [Wall Brew Co](https://wallbrew.com/)
+Copyright © 2020-2023 - [Wall Brew Co](https://wallbrew.com/)
 
 This software is provided for free, public use as outlined in the [MIT License](https://github.com/Wall-Brew-Co/wb-metrics/blob/master/LICENSE)
