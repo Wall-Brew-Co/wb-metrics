@@ -11,7 +11,7 @@
   (:import (java.io StringWriter)))
 
 
-(defn decorate-logs
+(defn ^:deprecated decorate-logs
   [data {:keys [artifact-name] :as opts}]
   (let [version-info (when artifact-name (versioneer/get-artifact-info opts))]
     (-> data
@@ -19,7 +19,7 @@
         (merge (corr-ids/get-correlation-ids)))))
 
 
-(defn local-format
+(defn ^:deprecated local-format
   [opts data]
   (let [{:keys [no-stacktrace?]}                           opts
         {:keys [level ?err msg_ ?ns-str ?file timestamp_]} data
@@ -33,14 +33,14 @@
              (str "\n" (timbre/stacktrace err opts)))))))
 
 
-(defn logstash-format
+(defn ^:deprecated logstash-format
   [data]
   (let [writer (StringWriter.)]
     (logstash/data->json-stream data writer {:pr-stacktrace #(print (timbre/stacktrace % {:stacktrace-fonts nil}))})
     (.toString writer)))
 
 
-(defn log-level-middleware
+(defn ^:deprecated log-level-middleware
   [root-level {:keys [ns-levels]}]
   (let [root-logging-level (or root-level :info)]
     (timbre-ns-pattern-level/middleware
@@ -51,7 +51,7 @@
              ns-levels))))
 
 
-(defn configure!
+(defn ^:deprecated configure!
   ([] (configure! {}))
 
   ([{:keys [root-level]

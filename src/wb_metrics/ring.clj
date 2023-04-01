@@ -9,7 +9,7 @@
             [wb-metrics.versioneer :as versioneer]))
 
 
-(defn request->metric
+(defn ^:deprecated request->metric
   "Creates a metric name from the request.
   e.g.  GET /v1/recipe/:id and a request of /v1/loan/1234
   is turned into [\"requests\" \"get\" \"v1\" \"recipe\" \"_id\"]"
@@ -22,12 +22,12 @@
                            (cs/split #"/")))))))
 
 
-(defn static-asset?
+(defn ^:deprecated static-asset?
   [{:keys [uri]}]
   (some #(cs/ends-with? uri %) [".css" ".js" ".html"]))
 
 
-(defn wrap-metrics
+(defn ^:deprecated wrap-metrics
   [handler]
   (fn [request]
     (let [start  (System/currentTimeMillis)
@@ -46,7 +46,7 @@
               (metrics/send-elapsed (cons "timing" metric) duration))))))))
 
 
-(defn log-error
+(defn ^:deprecated log-error
   [e request]
   (logger/with-context (select-keys request [:request-method :uri :query-string])
                        (logger/errorf e "Server error! '%s' handling %s %s"
@@ -55,7 +55,7 @@
                                       (:uri request))))
 
 
-(defn wrap-logging*
+(defn ^:deprecated wrap-logging*
   "Supported option:
     * excluded-routes - sequence of strings representing routes that shouldn't be logged"
   [handler & [{:keys [excluded-routes]}]]

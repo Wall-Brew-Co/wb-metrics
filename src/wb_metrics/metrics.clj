@@ -5,13 +5,13 @@
   (:import (java.util.concurrent TimeUnit)))
 
 
-(defn mark-meter
+(defn ^:deprecated mark-meter
   "Sends a meter metric for a given metric name."
   [metric-name]
   (meter/mark! (meter/meter metric-name)))
 
 
-(defn send-elapsed
+(defn ^:deprecated send-elapsed
   "Sends a timer metric for a given metric name and elapsed milliseconds."
   [metric-name millis]
   (.update (timer/timer metric-name) millis TimeUnit/MILLISECONDS))
